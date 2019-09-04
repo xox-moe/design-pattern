@@ -37,9 +37,9 @@ public class Client {
             // 注销第一个实例
             PrototypeManager.removePrototype("p1");
             // 再次克隆第一个实例的原型
-//            Prototype p5 = PrototypeManager.getPrototype("p1").clone();
-//            p5.setName("王五");
-//            System.out.println("第一个实例的副本：" + p5);
+            Prototype p5 = PrototypeManager.getPrototype("p1").clone();
+            p5.setName("王五");
+            System.out.println("第一个实例的副本：" + p5);
         } catch (Exception e) {
             e.printStackTrace();
         }
