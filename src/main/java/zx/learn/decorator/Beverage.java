@@ -20,4 +20,5 @@ public abstract class Beverage {
      * @return
      */
     public abstract double cost();
+
 }
