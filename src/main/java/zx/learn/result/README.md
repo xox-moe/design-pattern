@@ -74,7 +74,7 @@ CPU有不同的厂家，不同的规格，因此使用了*工厂方法*模式，
 
 类图
 
-![reult](./img/Package result.png)
+![reult](img/result.png)
 
 
 ### 场景五
