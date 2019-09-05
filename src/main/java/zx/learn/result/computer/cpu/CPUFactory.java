@@ -10,12 +10,12 @@ import zx.learn.result.配置单.CPUInfo;
  * Description:
  */
 public class CPUFactory {
-    public static CPU getCpu(String brand, String name, int coreNum, int threadNum,double price) throws Exception {
+    public static CPU getCpu(String brand, String name, int coreNum, int threadNum, double price) throws Exception {
         switch (brand) {
             case "Intel":
-                return new IntelCPU(name, coreNum, threadNum,price);
+                return new IntelCPU(name, coreNum, threadNum, price);
             case "AMD":
-                return new AMDCPU(name, coreNum, threadNum,price);
+                return new AMDCPU(name, coreNum, threadNum, price);
             default:
                 throw new Exception("没有改品牌的CPU");
         }

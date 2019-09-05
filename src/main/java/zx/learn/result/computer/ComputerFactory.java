@@ -13,11 +13,11 @@ import zx.learn.result.computer.cpu.CPUFactory;
 public class ComputerFactory {
 
     public static AbstractComputer getComputer(ConfigurationList configuration) throws Exception {
-        CPU cpu = CPUFactory.getCpu(configuration.cpuBrand, configuration.cpuName, configuration.cpuCoreNum, configuration.cpuThreadNum,configuration.cpuPrice);
+        CPU cpu = CPUFactory.getCpu(configuration.cpuBrand, configuration.cpuName, configuration.cpuCoreNum, configuration.cpuThreadNum, configuration.cpuPrice);
 //        Chassis chassis = ChassisFactory.getChassis(configuration.chassisBrand, configuration.chassisSize, configuration.chassisPrice);
 
 
-        return new AbstractComputer(  null, cpu,null);
+        return new AbstractComputer(null, cpu, null);
 
     }
 

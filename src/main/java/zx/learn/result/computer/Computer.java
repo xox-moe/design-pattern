@@ -1,5 +1,7 @@
 package zx.learn.result.computer;
 
+import zx.learn.result.配置单.配置单;
+
 /**
  * Created with IntelliJ IDEA.
  * User: zx
@@ -10,5 +12,7 @@ package zx.learn.result.computer;
 public interface Computer {
 
     public String introduce();
+
+    public 配置单 getConfigurationList();
 
 }

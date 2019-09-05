@@ -8,9 +8,9 @@ package zx.learn.result.配置单;
  * Description:
  */
 public class 配置单 {
-    CPUInfo cpuInfo;
-    MemoryInfo memoryInfo;
-    MotherBoardInfo motherBoardInfo;
+    private CPUInfo cpuInfo;
+    private MemoryInfo memoryInfo;
+    private MotherBoardInfo motherBoardInfo;
 
     public CPUInfo getCpuInfo() {
         return cpuInfo;

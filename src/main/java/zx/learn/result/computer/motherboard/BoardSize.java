@@ -1,7 +1,7 @@
 package zx.learn.result.computer.motherboard;
 
 public enum BoardSize {
-    ATX(5),MATX(4),ITX(3);
+    ATX(5), MATX(4), ITX(3);
 
     int size;
 
