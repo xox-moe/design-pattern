@@ -1,5 +1,6 @@
 package zx.learn.result;
 
+import lombok.extern.slf4j.Slf4j;
 import zx.learn.result.computer.Commodity;
 import zx.learn.result.computer.cpu.CPUFactory;
 import zx.learn.result.computer.memory.Memory;
@@ -18,13 +19,23 @@ import java.util.List;
  * Time: 15:41
  * Description: 京东
  */
+
+@Slf4j
 public class JD implements Store {
+
+    String name = "JD";
+
+
+    public String getName() {
+        return name;
+    }
+
 
     HashMap<String,Commodity> hashMap = new HashMap();
     {
         try {
-            hashMap.put("1", CPUFactory.getCpu("AMD", "Ryzen 7", 12, 24, 3999));
-            hashMap.put("2", CPUFactory.getCpu("Intel", "Core i7", 8, 16, 3899));
+            hashMap.put("1", CPUFactory.getCpu("AMD", "Ryzen 7", 12, 24, 3799));
+            hashMap.put("2", CPUFactory.getCpu("Intel", "Core i7", 8, 16, 1699));
             hashMap.put("4", new MotherBoard("MSI", BoardSize.ITX, 899));
             hashMap.put("5", new MotherBoard("MSI", BoardSize.MATX, 2799));
             hashMap.put("6", new MotherBoard("ASUS", BoardSize.ATX, 1999));
@@ -57,6 +68,7 @@ public class JD implements Store {
 
     @Override
     public Commodity getCommodity(String id) throws Exception {
+        log.info("从 JD 拿到了货 " + id + " ，结束");
         return hashMap.get(id);
     }
 
@@ -64,12 +76,9 @@ public class JD implements Store {
      * 获取本店有的 商品 List
      * @return
      */
-    public List<String> getCommodityList() {
-        List<String> strings = new ArrayList<>();
-        for (String s : hashMap.keySet()) {
-            strings.add("ID:" + s + "  " +hashMap.get(s).introduce() + "来自JD");
-        }
-        return strings;
+    @Override
+    public HashMap<String,Commodity> getCommodityList() {
+        return hashMap;
     }
 
 }

@@ -1,5 +1,6 @@
 package zx.learn.result.computer.cpu;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import zx.learn.result.computer.Commodity;
@@ -15,9 +16,10 @@ import zx.learn.result.配置单.CPUInfo;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class CPU extends Commodity {
 
-    public CPU(String brand, String name, int coreNum, int threadNum,double price) {
+    public CPU(String brand, String name, int coreNum, int threadNum, double price) {
         this.brand = brand;
         this.name = name;
         this.coreNum = coreNum;
@@ -39,11 +41,11 @@ public class CPU extends Commodity {
     protected double price;
 
     public String introduce() {
-        return  "ID:"+id+  " 品牌："+brand+"  名称："+name+"  核心数量："+coreNum+"  线程数量："+threadNum;
+        return "CPU   品牌：" + brand + "  名称：" + name + "  核心数量：" + coreNum + "  线程数量：" + threadNum + "  价格："+price;
     }
 
     public CPUInfo getCpuInfo() {
-        return new CPUInfo(brand,name,coreNum,threadNum,price);
+        return new CPUInfo(brand, name, coreNum, threadNum, price);
     }
 
 }

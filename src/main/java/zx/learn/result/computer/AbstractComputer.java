@@ -51,14 +51,14 @@ public class AbstractComputer implements Computer {
     public String introduce() {
         double totalPrice = motherBoard.getPrice() + cpu.getPrice() + memory.getPrice();
         String str;
-        str = "\n  主板" + motherBoard.introduce() +
-                "\n  CPU" + cpu.introduce() +
-                "\n  内存" + memory.introduce();
+        str = "\n" + motherBoard.introduce() +
+                "\n" + cpu.introduce() +
+                "\n" + memory.introduce();
         if (graphicsCard != null) {
-            str += ("\n  显卡" + graphicsCard.introduce());
+            str += ("\n" + graphicsCard.introduce());
             totalPrice += graphicsCard.getPrice();
         }
-        str += "\n 总价：" + totalPrice;
+        str += "\n总价：" + totalPrice;
 
         return str;
     }

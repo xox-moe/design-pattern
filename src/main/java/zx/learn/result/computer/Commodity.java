@@ -1,5 +1,6 @@
 package zx.learn.result.computer;
 
+
 public abstract class Commodity {
 
     public String id = "";

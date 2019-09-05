@@ -1,5 +1,6 @@
 package zx.learn.result;
 
+import lombok.extern.slf4j.Slf4j;
 import zx.learn.result.computer.Commodity;
 import zx.learn.result.computer.cpu.CPUFactory;
 import zx.learn.result.computer.memory.Memory;
@@ -17,9 +18,16 @@ import java.util.List;
  * Time: 15:36
  * Description: 商店仓库
  */
+@Slf4j
 public class 仓库 implements Store {
 
-//    Store successor;
+    //    Store successor;
+    String name = "仓库";
+
+
+    public String getName() {
+        return name;
+    }
 
     HashMap<String, Commodity> hashMap = new HashMap();
 
@@ -31,9 +39,9 @@ public class 仓库 implements Store {
             hashMap.put("4", new MotherBoard("MSI", BoardSize.ITX, 899));
             hashMap.put("5", new MotherBoard("MSI", BoardSize.MATX, 2999));
             hashMap.put("6", new MotherBoard("ASUS", BoardSize.ATX, 1999));
-            hashMap.put("7", new Memory("芝奇", 8,3600, 599));
-            hashMap.put("8", new Memory("芝奇", 16,3200, 1399));
-            hashMap.put("9", new Memory("Kingston", 8,2666, 249));
+            hashMap.put("7", new Memory("芝奇", 8, 3600, 599));
+            hashMap.put("8", new Memory("芝奇", 16, 3200, 1399));
+            hashMap.put("9", new Memory("Kingston", 8, 2666, 249));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,22 +51,32 @@ public class 仓库 implements Store {
 
     @Override
     public Commodity getCommodity(String id) throws Exception {
+
         Commodity commodity = hashMap.get(id);
 
         if (commodity == null) {
 //            commodity = successor.getCommodity(id);
             throw new Exception("没有该商品");
         }
-
+        log.info("从仓库拿到了货 " + id + " ，结束");
         return commodity;
     }
 
+//    @Override
+//    public List<String> getCommodityList() {
+//        List<String> strings = new ArrayList<>();
+//        for (String s : hashMap.keySet()) {
+//            strings.add( hashMap.get(s).introduce() + "来自仓库");
+//        }
+//        return strings;
+//    }
+
     @Override
-    public List<String> getCommodityList() {
-        List<String> strings = new ArrayList<>();
-        for (String s : hashMap.keySet()) {
-            strings.add("ID:" + s + "  " + hashMap.get(s).introduce() + "来自仓库");
-        }
-        return strings;
+    public HashMap<String, Commodity> getCommodityList() {
+//        List<Commodity> commodities = new ArrayList<>();
+//        hashMap.keySet().forEach(k -> commodities.add(hashMap.get(k)));
+//        return commodities;
+        return hashMap;
     }
+
 }

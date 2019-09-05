@@ -1,9 +1,6 @@
 package zx.learn.result.computer.memory;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import zx.learn.result.computer.Commodity;
 import zx.learn.result.配置单.MemoryInfo;
 
@@ -19,6 +16,7 @@ import zx.learn.result.配置单.MemoryInfo;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Memory extends Commodity {
 
     String brand;
@@ -27,7 +25,7 @@ public class Memory extends Commodity {
     double price;
 
     public String introduce() {
-        return "ID:"+id+  "  品牌：" + brand + "  大小:" + size + "GB  频率:" + frequency + "M Hz  价格:" + price ;
+        return "内存  品牌：" + brand + "  大小:" + size + "GB  频率:" + frequency + "M Hz  价格:" + price;
     }
 
     public MemoryInfo getMemoryInfo() {

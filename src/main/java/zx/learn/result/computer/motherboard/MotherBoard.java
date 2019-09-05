@@ -1,5 +1,6 @@
 package zx.learn.result.computer.motherboard;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import zx.learn.result.computer.Commodity;
@@ -14,6 +15,7 @@ import zx.learn.result.配置单.MotherBoardInfo;
  */
 @Getter
 @Setter
+@EqualsAndHashCode
 public class MotherBoard extends Commodity {
 
     protected String brand;
@@ -27,7 +29,7 @@ public class MotherBoard extends Commodity {
     }
 
     public String introduce() {
-        return "ID:" + id + "品牌：" + brand + " 大小：" + size + " 价格：" + price;
+        return "主板  品牌：" + brand + " 大小：" + size + " 价格：" + price;
     }
 
     public MotherBoardInfo getMotherBoardInfo() {

@@ -1,5 +1,6 @@
 package zx.learn.result;
 
+import lombok.extern.slf4j.Slf4j;
 import zx.learn.result.computer.Commodity;
 import zx.learn.result.computer.AbstractComputer;
 import zx.learn.result.computer.AbstractComputerWrapper;
@@ -10,8 +11,7 @@ import zx.learn.result.computer.memory.Memory;
 import zx.learn.result.computer.motherboard.MotherBoard;
 import zx.learn.result.配置单.配置单;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +20,7 @@ import java.util.List;
  * Time: 15:30
  * Description:
  */
+@Slf4j
 public class Intermediary {
 
     public static Intermediary intermediary;
@@ -27,8 +28,8 @@ public class Intermediary {
     List<Store> storeList = new ArrayList<>();
 
     {
-        storeList.add(new JD());
         storeList.add(new 商店());
+        storeList.add(new JD());
     }
 
     public static Intermediary getInstance() {
@@ -55,9 +56,9 @@ public class Intermediary {
         Memory memory = Memory.getMemory(c.getMemoryInfo());
         MotherBoard motherBoard = MotherBoard.getMotherBoard(c.getMotherBoardInfo());
 
-        cpu.setPrice(cpu.getPrice() * 1.2);
-        memory.setPrice(memory.getPrice() * 2);
-        motherBoard.setPrice(motherBoard.getPrice() * 1.5);
+        cpu.setPrice(cpu.getPrice());
+        memory.setPrice(memory.getPrice());
+        motherBoard.setPrice(motherBoard.getPrice());
 
         return new AbstractComputerWrapper(new AbstractComputer(motherBoard, cpu, memory));
 
@@ -85,12 +86,12 @@ public class Intermediary {
             }
             if (newCommodity.getPrice() < commodity.getPrice()) {
                 commodity = newCommodity;
+                log.info(store.getName() + "的货价格更低，用他家的");
             }
 
         }
         return commodity;
     }
-
 
 
     public Commodity getCommodity(String id) throws Exception {
@@ -99,10 +100,24 @@ public class Intermediary {
 
 
     public List<String> getCommodityList() {
+//        List<String> strings = new ArrayList<>();
+//        for (Store store : storeList) {
+//            strings.addAll(store.getCommodityList());
+//        }
+//        return strings;
+        Set<String> keys = new HashSet<>();
+        HashMap<String, Commodity> map = new HashMap<>();
         List<String> strings = new ArrayList<>();
         for (Store store : storeList) {
-            strings.addAll(store.getCommodityList());
+            HashMap<String, Commodity> stringCommodityHashMap = store.getCommodityList();
+            for (String s : stringCommodityHashMap.keySet()) {
+                if (!keys.contains(s)) {
+                    keys.add(s);
+                    map.put(s, stringCommodityHashMap.get(s));
+                }
+            }
         }
+        map.forEach((k, v) -> strings.add("ID: " + k + "  " + v.introduce()));
         return strings;
     }
 }

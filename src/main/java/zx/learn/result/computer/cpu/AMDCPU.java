@@ -1,5 +1,7 @@
 package zx.learn.result.computer.cpu;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * Created with IntelliJ IDEA.
  * User: zx
@@ -7,11 +9,12 @@ package zx.learn.result.computer.cpu;
  * Time: 13:52
  * Description:
  */
+@EqualsAndHashCode
 public class AMDCPU extends CPU {
 
 
-    public AMDCPU( String name, int coreNum, int threadNum,double price) {
-        super("AMD", name, coreNum, threadNum,price);
+    public AMDCPU(String name, int coreNum, int threadNum, double price) {
+        super("AMD", name, coreNum, threadNum, price);
     }
 
 }

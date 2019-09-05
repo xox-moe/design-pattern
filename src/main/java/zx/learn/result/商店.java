@@ -1,5 +1,6 @@
 package zx.learn.result;
 
+import lombok.extern.slf4j.Slf4j;
 import zx.learn.result.computer.Commodity;
 import zx.learn.result.computer.cpu.CPUFactory;
 import zx.learn.result.computer.memory.Memory;
@@ -17,9 +18,18 @@ import java.util.List;
  * Time: 15:34
  * Description:
  */
+
+@Slf4j
 public class 商店 implements Store {
 
     Store successor;
+
+    String name = "商店";
+
+
+    public String getName() {
+        return name;
+    }
 
 
     HashMap<String,Commodity> hashMap = new HashMap();
@@ -44,8 +54,12 @@ public class 商店 implements Store {
     public Commodity getCommodity(String id) throws Exception {
         Commodity commodity = hashMap.get(id);
         if (commodity == null) {
+            log.info("从商店没拿到货，去仓库看看看");
             commodity = successor.getCommodity(id);
+        } else {
+            log.info("从商店拿到了货 " + id + " ，结束");
         }
+
         return commodity;
     }
 
@@ -54,13 +68,12 @@ public class 商店 implements Store {
      * 获取本店有的 商品 List
      * @return
      */
-    public List<String> getCommodityList() {
-        List<String> strings = new ArrayList<>();
-        for (String s : hashMap.keySet()) {
-            strings.add("ID:" + s + "  " +hashMap.get(s).introduce() + "来自商店");
-        }
-        strings.addAll(successor.getCommodityList());
-        return strings;
+    @Override
+    public HashMap<String,Commodity> getCommodityList() {
+//        List<Commodity> commodities = new ArrayList<>();
+//        hashMap.keySet().forEach(k -> commodities.add(hashMap.get(k)));
+//        return commodities;
+        return hashMap;
     }
 
 

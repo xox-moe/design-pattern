@@ -1,5 +1,6 @@
 package zx.learn.result.computer.graphcard;
 
+import lombok.EqualsAndHashCode;
 import zx.learn.result.computer.Commodity;
 
 /**
@@ -9,7 +10,8 @@ import zx.learn.result.computer.Commodity;
  * Time: 13:37
  * Description:
  */
-public class GraphicsCard  extends Commodity {
+@EqualsAndHashCode
+public class GraphicsCard extends Commodity {
 
     String brand;
     String name;
@@ -17,7 +19,7 @@ public class GraphicsCard  extends Commodity {
 
     @Override
     public String introduce() {
-        return "品牌：" + brand + "  名称:" + name + "  价格:" + price ;
+        return "品牌：" + brand + "  名称:" + name + "  价格:" + price;
     }
 
     @Override
